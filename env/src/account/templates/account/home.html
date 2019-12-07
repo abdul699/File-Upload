@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
+  <h1 class="display-4">Download or Upload Book</h1>
+  <p class="lead">This is a website where you can upload or download books.</p>
+  {% if user.is_authenticated %}
+	  <p class="lead">You are a registered user.</p>
+  {% else %}
+	  <h3 class="display-7">It seems you are not logged in.</h3>
+	  <p class="lead">To contribute to our books's catalogue or to download the books, you need to register. Registration just takes few seconds. Please <a class="p-2 text-dark" href="{% url 'register' %}"><strong>click here</strong></a> to register.
+	  Already have an account, Please <a class="p-2 text-dark" href="{% url 'login' %}"><strong>click here</strong></a>to login</p>
+  {% endif %}
+</div>
+
+{% if user.is_authenticated %}
+	<p>Registered users:</p>
+	{% for member in members %}
+		<ul class="list-group">
+  			<li class="list-group-item">{{ member.username }}</li>
+		</ul>
+	{% endfor %}
+{% else %}
+<p>Total registered users: {{ count }}</p>
+{% endif %}
+</div>
+{% endblock %}

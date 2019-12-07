@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h2 class="mx-auto text-center">Books</h2>
+{% if user.is_authenticated %}
+<table id="dtVerticalScrollExample" class="table">
+	<thead class="table-dark">
+		<tr>
+			<th>Title</th>
+			<th>Author</th>
+			<th>Download</th>
+			<th>Uploaded by</th>
+		</tr>
+	</thead>
+	<tbody>
+		{% for book in books %}
+		<tr>
+			<td>{{ book.title }}</td>
+			<td>{{ book.author }}</td>
+			<td>
+				<a href="{{ book.pdf.url }}" class="btn btn-primary btn-sm" target="_blank">
+					Download PDF
+				</a>
+			</td>
+			<td>{{ book.uploaded_by.username }}</td>
+		</tr>
+		{% endfor %}
+	</tbody>
+</table>
+{% else %}
+<p style="color: red;" class="m-auto">It seems you are not logged in. To download the following books or to contribute to our book's catalogue please login.</p>
+<table class="table mb-0">
+	<thead class="table-dark">
+		<tr>
+			<th>Title</th>
+			<th>Author</th>
+		</tr>
+	</thead>
+	<tbody>
+		{% for book in books %}
+		<tr>
+			<td>{{ book.title }}</td>
+			<td>{{ book.author }}</td>
+		</tr>
+		{% endfor %}
+	</tbody>
+</table>
+{% endif %}
+
+{% endblock %}
