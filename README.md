@@ -1,9 +1,9 @@
 # File-Upload
 #### This django website contains two apps:
 
-#### * accout: 
+* #### accout: 
 For user registration, login, logout, password reset and password change.
 
-#### * book: 
+* #### book: 
 For uploading/downloading files.
 
