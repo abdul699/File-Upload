@@ -2,8 +2,8 @@ from django.shortcuts import render, redirect
 from .models import Account
 from django.contrib.auth import login, authenticate, logout
 from .forms import RegistrationForm, AccountAuthenticationForm, AccountUpdateForm
-# Create your views here.
 
+# Create your views here.
 #home page view
 def home(request):
 	context = {}
@@ -35,7 +35,7 @@ def registration_view(request):
 	return render(request,'account/register.html', context)
 
 
-
+# Used inbuilt logout view
 def logout_view(request):
 	logout(request)
 	return redirect('home')
@@ -80,11 +80,3 @@ def update_view(request):
 			})
 	context['update_form'] = form
 	return render(request, 'account/update.html', context)
-
-
-
-
-
-
-
-
