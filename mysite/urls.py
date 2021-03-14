@@ -33,7 +33,7 @@ from book.views import(
     )
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', home, name='home'),
+    path('/', home, name='home'),
     path('register/', registration_view, name='register'),
     path('logout/', logout_view, name='logout'),
     path('login/', login_view, name='login'),
